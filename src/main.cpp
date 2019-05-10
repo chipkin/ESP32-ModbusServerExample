@@ -21,7 +21,8 @@
 
 // Missing file
 // This file is part of the CAS Modbus stack and is not included in this repo
-// More information about the CAS Modbus stack can be found here !!!! TODO !!!!
+// More information about the CAS Modbus stack can be found here http://store.chipkin.com
+// See this issue for more information https://github.com/chipkin/ESP32-ModbusServerExample/issues/1
 #include <CASModbusAdapter.h> // Loads all the Modbus functions.
 #include <ChipkinEndianness.h> // Helps with OS depenent Endianness
 
