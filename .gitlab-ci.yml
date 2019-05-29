@@ -24,13 +24,17 @@ Build ESP32 ModbusServerExample:
     # Install platformio
     - "pip install -U platformio"    
   script:
+    - ls 
+    - ls cas-modbus-stack/
+    - ls cas-modbus-stack/source/
+    - ls cas-modbus-stack/submodules/cas-common/source/
     # Move the files 
     - mkdir lib/casmodbusstack/
     - mv cas-modbus-stack/source/* lib/casmodbusstack/    
     - mv cas-modbus-stack/adapters/cpp/* lib/casmodbusstack/
     - mv cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/casmodbusstack/
     # Debug 
-    - ls 
+    - ls lib/casmodbusstack/
     # Build 
     - "platformio ci --lib='.' --board=featheresp32 $PLATFORMIO_CI_EXTRA_ARGS"
   
