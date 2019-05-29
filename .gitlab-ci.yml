@@ -1,7 +1,5 @@
 # Copied from https://docs.platformio.org/en/latest/ci/gitlab.html
 
-image: python:2.7
-
 stages:
   - test
 
@@ -9,15 +7,17 @@ cache:
   key: ${CI_JOB_NAME}
 
 .job_template: &pio_run
+  image: python:2.7
+  tags: 
+    - docker 
   script:
     - "platformio ci --lib='.' --board=featheresp32 $PLATFORMIO_CI_EXTRA_ARGS"
-
-before_script:
-  # update the build number 
-  - echo -e "#define CI_PIPELINE_IID $CI_PIPELINE_IID\n" >src/CIBuildSettings.h 
-  - "cat src/CIBuildSettings.h"
-  # install platformio
-  - "pip install -U platformio"
+  before_script:
+    # update the build number 
+    - echo -e "#define CI_PIPELINE_IID $CI_PIPELINE_IID\n" >src/CIBuildSettings.h 
+    - "cat src/CIBuildSettings.h"
+    # install platformio
+    - "pip install -U platformio"
 
 Build ESP32-ModbusServerExample:
   <<: *pio_run
