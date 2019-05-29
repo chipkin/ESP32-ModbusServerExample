@@ -14,17 +14,9 @@ Build ESP32 ModbusServerExample:
   stage: build
   tags: 
     - docker 
-  variables:
-    PLATFORMIO_CI_EXTRA_ARGS: ""
-    PLATFORMIO_CI_SRC: src
-  before_script:
-    # Update the build number 
-    - echo -e "#define CI_PIPELINE_IID $CI_PIPELINE_IID\n" >src/CIBuildSettings.h 
-    - "cat src/CIBuildSettings.h"
-    # Install platformio
-    - "pip install -U platformio"    
   script:
     - ls 
+    - ls xxx
     - ls cas-modbus-stack/
     - ls cas-modbus-stack/source/
     - ls cas-modbus-stack/submodules/cas-common/source/
@@ -35,9 +27,3 @@ Build ESP32 ModbusServerExample:
     - mv cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/casmodbusstack/
     # Debug 
     - ls lib/casmodbusstack/
-    # Build 
-    - "platformio ci --lib='.' --board=featheresp32 $PLATFORMIO_CI_EXTRA_ARGS"
-  
-  artifacts:
-    paths:
-      - .pioenvs/featheresp32/firmware.*
