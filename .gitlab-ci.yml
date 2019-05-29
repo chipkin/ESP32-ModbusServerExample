@@ -1,13 +1,15 @@
 # Copied from https://docs.platformio.org/en/latest/ci/gitlab.html
 
 stages:
-  - test
+  - build
 
 cache:
   key: ${CI_JOB_NAME}
 
-Build ESP32-ModbusServerExample:
+
+Build ESP32 ModbusServerExample:
   image: python:2.7
+  stage: build
   tags: 
     - docker 
   variables:
@@ -21,13 +23,14 @@ Build ESP32-ModbusServerExample:
     - "pip install -U platformio"    
   script:
     # Move the files 
-    mkdir lib/casmodbusstack/
-    mv cas-modbus-stack/source/* lib/casmodbusstack/    
-    mv cas-modbus-stack/adapters/cpp/* lib/casmodbusstack/
-    mv cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/casmodbusstack/
+    - mkdir lib/casmodbusstack/
+    - mv cas-modbus-stack/source/* lib/casmodbusstack/    
+    - mv cas-modbus-stack/adapters/cpp/* lib/casmodbusstack/
+    - mv cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/casmodbusstack/
 
     # Build 
     - "platformio ci --lib='.' --board=featheresp32 $PLATFORMIO_CI_EXTRA_ARGS"
+  
   artifacts:
     paths:
       - .pioenvs/featheresp32/firmware.*
