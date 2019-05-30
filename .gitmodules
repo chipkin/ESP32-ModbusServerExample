@@ -1,0 +1,3 @@
+[submodule "cas-modbus-stack"]
+	path = cas-modbus-stack
+	url = ../../chipkin/cas-modbus-stack.git
