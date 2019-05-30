@@ -35,9 +35,9 @@ Build ESP32 ModbusServerExample:
     # so we can't just put the entire cas-modbus-stack folder into the lib folder. We need to 
     # move the files that are needed into lib folder for the build. 
     - mkdir lib/casmodbusstack/
-    - mv cas-modbus-stack/source/* lib/casmodbusstack/    
-    - mv cas-modbus-stack/adapters/cpp/* lib/casmodbusstack/
-    - mv cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/casmodbusstack/
+    - cp cas-modbus-stack/source/* lib/casmodbusstack/    
+    - cp cas-modbus-stack/adapters/cpp/* lib/casmodbusstack/
+    - cp cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/casmodbusstack/
     # Debug 
     - ls lib/casmodbusstack/
     # Build 
