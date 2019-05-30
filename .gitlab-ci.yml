@@ -46,10 +46,10 @@ Build ESP32 ModbusServerExample:
 
     # Debug 
     - pwd 
-    - ls 
-    - ls /root/ 2> /dev/null
-    - ls .pioenvs/ 2> /dev/null
-    - ls .pioenvs/featheresp32/ -lh 2> /dev/null
+    - ls -al
+    - ls /root/ 2> /dev/null -al
+    - ls .pioenvs/ 2> /dev/null -al
+    - ls .pioenvs/featheresp32/ -alh 2> /dev/null
   
   artifacts:
     paths:
