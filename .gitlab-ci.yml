@@ -26,6 +26,7 @@ Build ESP32 ModbusServerExample:
     - ls cas-modbus-stack/
     - ls cas-modbus-stack/source/
     - ls cas-modbus-stack/submodules/cas-common/source/
+    
     # Move the files 
     # The way that platforum.io works is that it will compile every file in the lib folder.
     # and the entire cas-modbus-stack has many dependencies, including unit testing frameworks. 
@@ -35,12 +36,17 @@ Build ESP32 ModbusServerExample:
     - cp cas-modbus-stack/source/* lib/cas-modbus-stack/    
     - cp cas-modbus-stack/adapters/cpp/* lib/cas-modbus-stack/
     - cp cas-modbus-stack/submodules/cas-common/source/ChipkinEndianness*.* lib/cas-modbus-stack/
+
     # Debug 
     - ls lib/cas-modbus-stack/
+
     # Build 
     # More info about platformio https://docs.platformio.org/en/latest/userguide/cmd_ci.html 
     - "platformio ci --lib='lib/cas-modbus-stack' --board=featheresp32 src"
+
+    # Debug 
+    - ls .pioenvs/featheresp32/ -lh
   
   artifacts:
     paths:
-      - .pioenvs/featheresp32/firmware.*
+      - .pioenvs/featheresp32/firmware*.*
