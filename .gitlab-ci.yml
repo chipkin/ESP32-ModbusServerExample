@@ -45,7 +45,7 @@ Build ESP32 ModbusServerExample:
     - "platformio ci --lib='lib/cas-modbus-stack' --board=featheresp32 src"
 
     # Debug 
-    - cd 
+    - pwd 
     - ls 
     - ls /root/ 2> /dev/null
     - ls .pioenvs/ 2> /dev/null
